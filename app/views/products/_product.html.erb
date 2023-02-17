@@ -1,10 +1,14 @@
 <article>
   <%= link_to product_path(product) do %>
-    <%= image_tag product.image.thumb.url , alt: product.name %>
-    <h1>
-      <span><%= product.name %></span>
-      <span><%= humanized_money_with_symbol product.price %></span>
-    </h1>
+    <% if product.image.thumb.url %>
+      <%= image_tag product.image.thumb.url , alt: product.name %>
+    <% else %>
+      <%= image_tag "https://www.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg", alt: "Placeholder" %>
+    <% end %>
+      <h1>
+        <span><%= product.name %></span>
+        <span><%= humanized_money_with_symbol product.price %></span>
+      </h1>
   <% end%>
   <div>
   <% if product.sold_out? %>
