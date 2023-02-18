@@ -48,5 +48,17 @@ RSpec.describe Product, type: :model do
       expect(product.errors.full_messages).to include("Category can't be blank")
       expect(product.errors.full_messages).to include("Category must exist")
     end
+
+    it 'fails to save without a price' do
+      category = Category.create(name: 'Flowers')
+      product = Product.new(
+        name: 'Testing',
+        price: nil, #not sure how to check
+        quantity: 20,
+        category: category
+      )
+      expect(product.save).to be false #returns true
+      expect(product.errors.full_messages).to include("Price must be greater than 0")
+    end
   end
 end
