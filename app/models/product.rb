@@ -12,4 +12,5 @@ class Product < ApplicationRecord
   def sold_out?
     quantity.zero?
   end
+
 end
