@@ -25,6 +25,17 @@ RSpec.describe Product, type: :model do
       expect(product.errors.full_messages).to include("Name can't be blank")
     end
     
+    it 'fails to save without a quantity' do
+      category = Category.create(name: 'Flowers')
+      product = Product.new(
+        name: 'Testing',
+        price: 25,
+        quantity: nil,
+        category: category
+      )
+      expect(product.save).to be false
+      expect(product.errors.full_messages).to include("Quantity can't be blank")
+    end
     
   end
 end
