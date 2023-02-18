@@ -53,11 +53,12 @@ RSpec.describe Product, type: :model do
       category = Category.create(name: 'Flowers')
       product = Product.new(
         name: 'Testing',
-        price: nil, #not sure how to check
+        price: nil,
         quantity: 20,
         category: category
       )
-      expect(product.save).to be false #returns true
+      expect(product.save).to be false
+      #expect(product.errors.full_messages).to include("Price is not a number")
       expect(product.errors.full_messages).to include("Price must be greater than 0")
     end
   end
