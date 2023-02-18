@@ -12,8 +12,8 @@ describe('Visit home page', () => {
   });
 
   it("should navigate to the product detail page", () => {
-    cy.get(".products article").first().click()
-    cy.get(".product-detail").should("be.visible")
+    cy.get(".products article").first().click();
+    cy.get(".product-detail").should("be.visible");
 
   });
 });
